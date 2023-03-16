@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 [16/Mar/2023:17:23:48 +0530] "GET / HTTP/1.1" [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36] 403 275 126 [-
+0:0:0:0:0:0:0:1 [16/Mar/2023:17:23:48 +0530] "GET /favicon.ico HTTP/1.1" [Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36] 403 111 179 [-

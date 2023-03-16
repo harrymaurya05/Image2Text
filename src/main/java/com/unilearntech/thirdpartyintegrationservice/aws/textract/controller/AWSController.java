@@ -19,9 +19,8 @@ import software.amazon.awssdk.services.textract.model.DetectDocumentTextResponse
 public class AWSController {
     private final IAWSService awsService;
     @RequestMapping(method = RequestMethod.POST,value = "/getTextFromImage")
-    public ResponseEntity<GetTextFromImageResponse> getTextFromImage(@RequestBody GetTextFromImageRequest request){
-        DetectDocumentTextResponse detectDocumentTextResponse = awsService.getTextFromImage(request);
-        GetTextFromImageResponse.builder().detectDocumentTextResponse(detectDocumentTextResponse).build();
-        return new ResponseEntity<GetTextFromImageResponse>( GetTextFromImageResponse.builder().detectDocumentTextResponse(detectDocumentTextResponse).build(), HttpStatus.OK);
+    public GetTextFromImageResponse getTextFromImage(@RequestBody GetTextFromImageRequest request){
+        String text = awsService.getTextFromImage(request);
+        return GetTextFromImageResponse.builder().text(text).build();
     }
 }

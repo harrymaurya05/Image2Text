@@ -5,5 +5,5 @@ import com.unilearntech.thirdpartyintegrationservice.aws.textract.object.communi
 import software.amazon.awssdk.services.textract.model.DetectDocumentTextResponse;
 
 public interface IAWSService {
-    DetectDocumentTextResponse getTextFromImage(GetTextFromImageRequest request);
+    String getTextFromImage(GetTextFromImageRequest request);
 }

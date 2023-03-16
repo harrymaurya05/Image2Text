@@ -16,5 +16,5 @@ import software.amazon.awssdk.services.textract.model.DetectDocumentTextResponse
 @AllArgsConstructor
 @ToString
 public class GetTextFromImageResponse {
-    private DetectDocumentTextResponse detectDocumentTextResponse;
+    private String text;
 }

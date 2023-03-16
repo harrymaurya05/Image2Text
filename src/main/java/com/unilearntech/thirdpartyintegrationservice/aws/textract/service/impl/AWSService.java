@@ -23,11 +23,11 @@ import software.amazon.awssdk.utils.StringUtils;
 @Service
 @RequiredArgsConstructor
 public class AWSService implements IAWSService {
-    @Override public DetectDocumentTextResponse getTextFromImage(GetTextFromImageRequest request) {
-        DetectDocumentTextResponse text = detectTextFromImage(request.getUrl());
+    @Override public String getTextFromImage(GetTextFromImageRequest request) {
+        String text = detectTextFromImage(request.getUrl());
         return text;
     }
-    public static DetectDocumentTextResponse detectTextFromImage(String sourceDoc) {
+    public static String detectTextFromImage(String sourceDoc) {
         Region region = Region.US_WEST_2;
         TextractClient textractClient = TextractClient.builder().region(region)
                 .credentialsProvider(ProfileCredentialsProvider.create()).build();
@@ -57,7 +57,7 @@ public class AWSService implements IAWSService {
                 }
             }
             System.out.println("textResponse : "+textResponse);
-            return textResponse;
+            return resultStr;
         }
         catch (TextractException | FileNotFoundException e) {
             System.err.println(e.getMessage());
