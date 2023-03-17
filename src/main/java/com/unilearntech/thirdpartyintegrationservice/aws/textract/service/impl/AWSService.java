@@ -32,10 +32,8 @@ public class AWSService implements IAWSService {
         TextractClient textractClient = TextractClient.builder().region(region)
                 .credentialsProvider(ProfileCredentialsProvider.create()).build();
         try {
-
             InputStream sourceStream = new FileInputStream(new File(sourceDoc));
             SdkBytes sourceBytes = SdkBytes.fromInputStream(sourceStream);
-
             // Get the input Document object as bytes
             Document myDoc = Document.builder().bytes(sourceBytes).build();
             DetectDocumentTextRequest detectDocumentTextRequest = DetectDocumentTextRequest.builder().document(myDoc)
@@ -45,18 +43,16 @@ public class AWSService implements IAWSService {
             List<Block> docInfo = textResponse.blocks();
             String resultStr = "";
             for (Block block : docInfo) {
+                System.out.println("Block :"+block);
                 String str = block.text();
                 if (StringUtils.isNotBlank(str)) {
                     //str = str.replaceAll("\\W", "");
+                    System.out.println("str : " + str);
                     str = str.trim();
-                    resultStr = str;
-                    if (str.length() == 4) {
-                        resultStr = str;
-                        System.out.println("resultStr : " + resultStr);
-                    }
+                    if(!resultStr.contains(str))
+                        resultStr = resultStr+" "+str;
                 }
             }
-            System.out.println("textResponse : "+textResponse);
             return resultStr;
         }
         catch (TextractException | FileNotFoundException e) {
